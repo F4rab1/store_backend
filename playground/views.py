@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q, F
 from store.models import Product
 
 
@@ -19,7 +19,13 @@ def say_hello(request):
     # query_set = Product.objects.filter(collection__id__lt=4)
     # query_set = Product.objects.filter(title__icontains="coffee")
     # query_set = Product.objects.filter(last_update__year=2023)
-    query_set = Product.objects.filter(description__isnull=True)
+    # query_set = Product.objects.filter(description__isnull=False)
+    # query_set = Product.objects.filter(Q(inventory__lt=10) | ~Q(unit_price__lt=20))
+    # query_set = Product.objects.filter(inventory=F('unit_price'))
+    # query_set = Product.objects.order_by('unit_price', '-title').reverse()
+    # product = Product.objects.order_by('unit_price')[0]
+    # product = Product.objects.earliest('unit_price')
+    query_set = Product.objects.all()[5:10]
 
     
     return render(request, 'hello.html', { 'name': 'Farabi', 'products': list(query_set)})
