@@ -30,6 +30,9 @@ def say_hello(request):
     # query_set = OrderItem.objects.values('product_id', 'product__title').distinct().order_by('product__title')
     # query_set = Product.objects.filter(id__in=OrderItem.objects.values('product_id').distinct()).order_by('title')
     # query_set = Product.objects.only('id', 'title')
-    query_set = Product.objects.defer('description')
+    # query_set = Product.objects.defer('description')
+    # query_set = Product.objects.select_related('collection').all()
+    query_set = Product.objects.prefetch_related('promotions').all()
+    
 
     return render(request, 'hello.html', { 'name': 'Farabi', 'products': list(query_set)})
