@@ -66,17 +66,17 @@ def say_hello(request):
     # collection = Collection(pk=11)
     # collection.delete()
     # Collection.objects.filter(id__gt=5).delete()
-    with transaction.atomic():
-        order = Order(pk=1001)
-        order.customer_id = 1
-        order.save()
+    # with transaction.atomic():
+    #     order = Order(pk=1001)
+    #     order.customer_id = 1
+    #     order.save()
 
-        item = OrderItem(pk=1001)
-        item.order = order
-        item.product_id = 1
-        item.quantity = 1
-        item.unit_price = 10
-        item.save()
+    #     item = OrderItem(pk=1001)
+    #     item.order = order
+    #     item.product_id = 1
+    #     item.quantity = 1
+    #     item.unit_price = 10
+    #     item.save()
         
 
     return render(request, 'hello.html', { 'name': 'Farabi' })
