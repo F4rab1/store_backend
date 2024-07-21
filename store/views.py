@@ -5,9 +5,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-from store.models import Product, Collection
+from store.models import Product, Collection, OrderItem, Review
 from django.db.models.aggregates import Count
-from .serializers import ProductSerializer, CollectionSerializer
+from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -16,13 +16,11 @@ class ProductViewSet(ModelViewSet):
     
     def get_serializer_context(self):
         return {'request': self.request}
-
-    def delete(self, request, pk):
-        product = Product.objects.get(pk=pk)
-        if product.orderitems.count() > 0:
+    
+    def destroy(self, request, *args, **kwargs):
+        if OrderItem.objects.filter(product_id=kwargs['pk']).count():
             return Response({"error": "Product cannot be deleted because it is ordered."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-        product.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return super().destroy(request, *args, **kwargs)
     
 
 class CollectionViewSet(ReadOnlyModelViewSet):
@@ -35,3 +33,8 @@ class CollectionViewSet(ReadOnlyModelViewSet):
             return Response({'error': 'collection cannot be deleted because there is products related to this collection'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         collection.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+class ReviewViewSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
