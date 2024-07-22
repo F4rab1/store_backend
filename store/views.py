@@ -3,6 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.filters import SearchFilter
 from store.models import Product, Collection, OrderItem, Review
 from django.db.models.aggregates import Count
 from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializer
@@ -11,8 +12,9 @@ from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializ
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['collection_id']
+    search_fields = ['title', 'description']
     
     def get_serializer_context(self):
         return {'request': self.request}
