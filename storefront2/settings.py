@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
-    'playground', 
     'debug_toolbar',
+    'playground', 
     'store',
-    'tags'
+    'tags',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +90,7 @@ WSGI_APPLICATION = 'storefront2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'storefront2',
+        'NAME': 'storefront',
         'USER': 'postgres',
         'PASSWORD': 'isaf',
         'HOST': 'localhost', 
@@ -143,3 +144,5 @@ REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'PAGE_SIZE': 10
 }
+
+AUTH_USER_MODEL = 'core.User'
