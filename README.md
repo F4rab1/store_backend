@@ -3,8 +3,16 @@
 This project is a backend API for a store, developed using Django and Django REST Framework
 
 **Endpoints:**
--products
--collections
--cart
 
-<img width="1280" alt="Screenshot 2024-08-08 at 23 08 11" src="https://github.com/user-attachments/assets/0c1e3e1a-eff5-4969-ab95-427219824b85">
+-products
+
+-collections
+
+-carts
+
+-customers
+
+-orders
+
+
+<img width="1280" alt="Screenshot 2024-08-24 at 23 08 20" src="https://github.com/user-attachments/assets/6a742fc5-5d38-4122-9191-88912b2a80ac">
