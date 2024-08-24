@@ -108,8 +108,10 @@ class OrderViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.is_staff:
+        user = self.request.user
+
+        if user.is_staff:
             return Order.objects.all()
         
-        customer_id = Customer.objects.only('id').get(user_id=self.request.user.id)
+        customer_id = Customer.objects.only('id').get_or_create(user_id=user.id)
         return Order.objects.filter(customer_id=customer_id)
