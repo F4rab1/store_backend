@@ -25,3 +25,10 @@ This project is a backend API for a store, developed using Django and Django RES
 -orders:
 
 <img width="1280" alt="Screenshot 2024-08-25 at 22 29 04" src="https://github.com/user-attachments/assets/28e43f21-9702-4715-9ce9-2f22bc55b37d">
+
+-token:
+
+<img width="831" alt="Screenshot 2024-09-06 at 22 48 08" src="https://github.com/user-attachments/assets/3dfbff80-4d1b-4b70-9d0e-f582a7f7fce3">
+
+
+
