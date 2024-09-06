@@ -30,5 +30,12 @@ This project is a backend API for a store, developed using Django and Django RES
 
 <img width="831" alt="Screenshot 2024-09-06 at 22 48 08" src="https://github.com/user-attachments/assets/3dfbff80-4d1b-4b70-9d0e-f582a7f7fce3">
 
+-Customer Profile:
+
+<img width="831" alt="Screenshot 2024-09-06 at 22 49 45" src="https://github.com/user-attachments/assets/f34220de-45c2-42eb-8b20-5ad48f717fc3">
+
+
+
+
 
 
