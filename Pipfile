@@ -10,6 +10,7 @@ djangorestframework = "*"
 drf-nested-routers = "*"
 django-filter = "*"
 pillow = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
