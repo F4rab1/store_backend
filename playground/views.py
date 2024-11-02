@@ -1,10 +1,11 @@
+from django.core.mail import send_mail, mail_admins, BadHeaderError
 from django.shortcuts import render
-from django.db.models import Q, F, Func, Value, ExpressionWrapper, DecimalField
-from django.db.models.functions import Concat
-from django.db.models.aggregates import Count, Max, Min, Avg, Sum
-from django.db import transaction
-from store.models import Product, Order, Collection, Customer
-from store.models import OrderItem
+# from django.db.models import Q, F, Func, Value, ExpressionWrapper, DecimalField
+# from django.db.models.functions import Concat
+# from django.db.models.aggregates import Count, Max, Min, Avg, Sum
+# from django.db import transaction
+# from store.models import Product, Order, Collection, Customer
+# from store.models import OrderItem
 
 def say_hello(request):
     # query_set = Product.objects.all()
@@ -77,6 +78,8 @@ def say_hello(request):
     #     item.quantity = 1
     #     item.unit_price = 10
     #     item.save()
-        
-
+    try:
+        send_mail('subject', 'body', 'farabi.issa@gmail.com', ['issafarabi2022@gmail.com'])
+    except BadHeaderError:
+        pass
     return render(request, 'hello.html', { 'name': 'Farabi' })
